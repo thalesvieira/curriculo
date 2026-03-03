@@ -14,21 +14,21 @@
             --bg-card: #1a1d27;
             --bg-card-hover: #222633;
             --bg-surface: #141722;
-            --accent: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.25);
-            --accent2: #8b5cf6;
-            --accent3: #06b6d4;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.25);
+            --accent2: #f97316;
+            --accent3: #d946ef;
             --accent4: #f59e0b;
-            --accent5: #10b981;
-            --accent6: #ef4444;
+            --accent5: #c084fc;
+            --accent6: #fb923c;
             --text: #e2e8f0;
             --text-muted: #94a3b8;
             --text-dim: #64748b;
             --border: rgba(255, 255, 255, 0.06);
-            --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            --gradient-2: linear-gradient(135deg, #06b6d4, #3b82f6);
-            --gradient-3: linear-gradient(135deg, #10b981, #06b6d4);
-            --gradient-4: linear-gradient(135deg, #f59e0b, #ef4444);
+            --gradient-1: linear-gradient(135deg, #8b5cf6, #f97316);
+            --gradient-2: linear-gradient(135deg, #f97316, #d946ef);
+            --gradient-3: linear-gradient(135deg, #d946ef, #8b5cf6);
+            --gradient-4: linear-gradient(135deg, #8b5cf6, #c084fc);
         }
 
         * {
@@ -100,8 +100,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             padding: 6px 16px;
             border-radius: 999px;
             font-size: 12px;
@@ -192,7 +192,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 24px rgba(139, 92, 246, 0.4);
         }
 
         .btn-primary svg {
@@ -238,7 +238,7 @@
 
         .kpi-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(59, 130, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.3);
         }
 
         .kpi-card::before {
@@ -353,7 +353,7 @@
         }
 
         .chart-card:hover {
-            border-color: rgba(59, 130, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.2);
         }
 
         .chart-card h3 {
@@ -410,6 +410,140 @@
         }
 
         /* === SKILLS RADAR + BARS === */
+
+        /* === PROJECTS === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .project-card:nth-child(1)::before {
+            background: var(--gradient-1);
+        }
+
+        .project-card:nth-child(2)::before {
+            background: var(--gradient-3);
+        }
+
+        .project-card:nth-child(3)::before {
+            background: var(--gradient-4);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .project-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .project-desc-group {
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .project-desc-group strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .project-desc-group p {
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .project-impact {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid var(--accent5);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 13.5px;
+            color: var(--text);
+        }
+
+        .project-tags {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .project-tag.python {
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        .project-tag.pbi {
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        .project-tag.rpa {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
         .skills-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -598,7 +732,7 @@
 
         .timeline-card:hover {
             transform: translateX(6px);
-            border-color: rgba(59, 130, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.2);
         }
 
         .timeline-header {
@@ -620,7 +754,7 @@
             font-size: 12px;
             font-weight: 600;
             color: var(--accent);
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(139, 92, 246, 0.1);
             padding: 4px 12px;
             border-radius: 999px;
             white-space: nowrap;
@@ -696,7 +830,7 @@
         }
 
         .edu-card:hover {
-            border-color: rgba(59, 130, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.2);
         }
 
         .edu-card .edu-icon {
@@ -906,7 +1040,7 @@
         <!-- ABOUT -->
         <section class="section animate-on-scroll">
             <div class="section-header">
-                <div class="icon" style="background:rgba(59,130,246,0.1);">👤</div>
+                <div class="icon" style="background:rgba(249,115,22,0.1);">👤</div>
                 <h2>Sobre</h2>
                 <div class="line"></div>
             </div>
@@ -931,7 +1065,7 @@
         <!-- CHARTS -->
         <section class="section animate-on-scroll">
             <div class="section-header">
-                <div class="icon" style="background:rgba(139,92,246,0.1);">📊</div>
+                <div class="icon" style="background:rgba(249,115,22,0.1);">📊</div>
                 <h2>Visão Analítica da Carreira</h2>
                 <div class="line"></div>
             </div>
@@ -963,10 +1097,118 @@
             </div>
         </section>
 
+        <!-- PROJECTS -->
+        <section class="section animate-on-scroll">
+            <div class="section-header">
+                <div class="icon" style="background:rgba(245,158,11,0.1);">🏆</div>
+                <h2>Projetos em Destaque</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🔄</div>
+                        <div class="project-title">Pipeline ETL & Transf. de Dados Fiscais (SAP)</div>
+                    </div>
+
+                    <div class="project-desc-group">
+                        <strong>O Problema:</strong>
+                        <p>Bases brutas do SAP com formatos incompatíveis e lentidão extrema para correlacionar volumes
+                            de operações (COMEX/Importação/Exportação) com os Centros de Custo financeiros.</p>
+                    </div>
+                    <div class="project-desc-group">
+                        <strong>A Solução:</strong>
+                        <p>Desenvolvimento de um script robusto em Python (Pandas) que consome extrações brutas,
+                            normaliza calendários convertendo-os dinamicamente em Ano/Período Fiscal, cruza múltiplos
+                            DataFrames e calcula o "Custo de Servir" unitário em tempo recorde.</p>
+                    </div>
+
+                    <div class="project-impact">
+                        <strong>Impacto:</strong> Transformou um processo de conciliação financeira de dias para
+                        minutos, gerando dados 100% limpos e parametrizados direto para a diretoria através do Power BI.
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="project-tag python">Python</span>
+                        <span class="project-tag">Pandas</span>
+                        <span class="project-tag">Numpy</span>
+                        <span class="project-tag">ETL Corporativo</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🤖</div>
+                        <div class="project-title">Ecossistema RPA Resiliente (Web & Desktop)</div>
+                    </div>
+
+                    <div class="project-desc-group">
+                        <strong>O Problema:</strong>
+                        <p>Extração manual, repetitiva e morosa de relatórios críticos de sistemas legados (como SAP
+                            GUI) e portais corporativos complexos.</p>
+                    </div>
+                    <div class="project-desc-group">
+                        <strong>A Solução:</strong>
+                        <p>Arquitetura de uma suíte de robôs em Python/Selenium autônomos. A infraestrutura conta com
+                            criptografia em memória para credenciais, gestão avançada de Logging e esperas explícitas
+                            customizadas para contornar gargalos e lentidão nas plataformas.</p>
+                    </div>
+
+                    <div class="project-impact">
+                        <strong>Impacto:</strong> Automação fim-a-fim de rotinas críticas (ex: zk53, COMEX, Jaggaer)
+                        rodando 24/7 sem falhas, poupando estimadas milhares de horas anuais da operação de backoffice.
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="project-tag rpa">Python</span>
+                        <span class="project-tag rpa">Selenium</span>
+                        <span class="project-tag">Cryptography</span>
+                        <span class="project-tag">OOP</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">📈</div>
+                        <div class="project-title">Dashboards Estratégicos & BI</div>
+                    </div>
+
+                    <div class="project-desc-group">
+                        <strong>O Problema:</strong>
+                        <p>Decisões executivas tomadas no escuro devido ao excesso de relatórios estáticos em planilhas
+                            não consolidadas.</p>
+                    </div>
+                    <div class="project-desc-group">
+                        <strong>A Solução:</strong>
+                        <p>Estruturação de Dataflows avançados utilizando Power Query e DAX focado em performance.
+                            Modelagem star-schema consumindo outputs dos RPAs para gerar painéis executivos com UX
+                            focado em storytelling de dados.</p>
+                    </div>
+
+                    <div class="project-impact">
+                        <strong>Impacto:</strong> Transparência total da rentabilidade de operações e "Custo Servir",
+                        guiando a tomada de decisão gerencial com métricas em tempo real, drill-downs e cruzamento de
+                        metadados logísticos.
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="project-tag pbi">Power BI</span>
+                        <span class="project-tag pbi">DAX</span>
+                        <span class="project-tag">Power Query</span>
+                        <span class="project-tag">Data Storytelling</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- SKILLS -->
         <section class="section animate-on-scroll">
             <div class="section-header">
-                <div class="icon" style="background:rgba(6,182,212,0.1);">⚡</div>
+                <div class="icon" style="background:rgba(217,70,239,0.1);">⚡</div>
                 <h2>Competências Técnicas</h2>
                 <div class="line"></div>
             </div>
@@ -1242,7 +1484,7 @@
         <!-- EDUCATION -->
         <section class="section animate-on-scroll">
             <div class="section-header">
-                <div class="icon" style="background:rgba(16,185,129,0.1);">🎓</div>
+                <div class="icon" style="background:rgba(192,132,252,0.1);">🎓</div>
                 <h2>Formação Acadêmica</h2>
                 <div class="line"></div>
             </div>
@@ -1294,7 +1536,7 @@
         }
 
         // =========================================
-        // SKILL BAR 
+        // SKILL BAR ANIMATION
         // =========================================
         function animateSkillBars() {
             document.querySelectorAll('.skill-bar-fill').forEach(el => {
@@ -1335,10 +1577,10 @@
                 datasets: [{
                     label: 'Nível de Proficiência',
                     data: [95, 90, 92, 90, 88, 82, 88, 65],
-                    backgroundColor: 'rgba(59,130,246,0.15)',
-                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(139,92,246,0.15)',
+                    borderColor: '#8b5cf6',
                     borderWidth: 2,
-                    pointBackgroundColor: '#3b82f6',
+                    pointBackgroundColor: '#8b5cf6',
                     pointBorderColor: '#fff',
                     pointBorderWidth: 1,
                     pointRadius: 4,
@@ -1380,10 +1622,10 @@
                 datasets: [{
                     data: [30, 25, 20, 15, 10],
                     backgroundColor: [
-                        '#3b82f6',
                         '#8b5cf6',
-                        '#06b6d4',
-                        '#10b981',
+                        '#f97316',
+                        '#c084fc',
+                        '#fb923c',
                         '#f59e0b'
                     ],
                     borderColor: '#1a1d27',
@@ -1431,13 +1673,13 @@
                     {
                         label: 'C# / .NET',
                         data: [0, 0, 0, 0, 80, 5],
-                        backgroundColor: '#06b6d4',
+                        backgroundColor: '#c084fc',
                         borderRadius: 4
                     },
                     {
                         label: 'SQL / Dados',
                         data: [20, 30, 40, 30, 40, 50],
-                        backgroundColor: '#3b82f6',
+                        backgroundColor: '#8b5cf6',
                         borderRadius: 4
                     },
                     {
