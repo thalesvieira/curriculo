@@ -46,15 +46,24 @@
         }
 
         /* === ANIMATED BG === */
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
+        /* === ANIMATED BG === */
+
+        @keyframes floatGlow {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            33% {
+                transform: scale(1.1) translate(30px, -40px);
+            }
+
+            66% {
+                transform: scale(0.9) translate(-20px, 30px);
+            }
+
+            100% {
+                transform: scale(1) translate(0, 0);
+            }
         }
 
         .bg-glow {
@@ -66,18 +75,105 @@
             opacity: 0.12;
             pointer-events: none;
             z-index: 0;
+            animation: floatGlow 15s ease-in-out infinite alternate;
         }
 
         .bg-glow-1 {
-            top: -200px;
-            left: -200px;
+            top: -150px;
+            left: -150px;
             background: var(--accent);
+            animation-duration: 20s;
         }
 
         .bg-glow-2 {
-            bottom: -200px;
-            right: -200px;
+            bottom: -150px;
+            right: -100px;
             background: var(--accent2);
+            animation-duration: 25s;
+            animation-direction: alternate-reverse;
+        }
+
+        .bg-glow-3 {
+            top: 40%;
+            left: 10%;
+            width: 500px;
+            height: 500px;
+            background: var(--accent5);
+            animation-duration: 22s;
+            opacity: 0.10;
+        }
+
+        .bg-glow-4 {
+            top: 10%;
+            right: 15%;
+            width: 450px;
+            height: 450px;
+            background: var(--accent3);
+            animation-duration: 28s;
+            animation-direction: alternate-reverse;
+            opacity: 0.09;
+        }
+
+        .bg-glow-5 {
+            bottom: 20%;
+            left: 30%;
+            width: 550px;
+            height: 550px;
+            background: var(--gradient-4);
+            animation-duration: 32s;
+            opacity: 0.08;
+        }
+
+        /* === WAVE ANIMATION === */
+        .waves {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            min-height: 100px;
+            max-height: 150px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        .parallax>use {
+            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+        }
+
+        .parallax>use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+            fill: var(--accent);
+        }
+
+        .parallax>use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+            fill: var(--accent2);
+        }
+
+        .parallax>use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+            fill: var(--accent5);
+        }
+
+        .parallax>use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+            fill: var(--accent3);
+        }
+
+        @keyframes move-forever {
+            0% {
+                transform: translate3d(-90px, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(85px, 0, 0);
+            }
         }
 
         /* === LAYOUT === */
@@ -980,9 +1076,25 @@
 
 <body>
 
-    <div class="bg-grid"></div>
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+    <div class="bg-glow bg-glow-4"></div>
+    <div class="bg-glow bg-glow-5"></div>
+
+    <!-- WAVES -->
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" />
+            <use xlink:href="#gentle-wave" x="48" y="3" />
+            <use xlink:href="#gentle-wave" x="48" y="5" />
+            <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+    </svg>
 
     <div class="container">
 
@@ -1120,9 +1232,9 @@
                     </div>
                     <div class="project-desc-group">
                         <strong>A Solução:</strong>
-                        <p>Desenvolvimento de um script robusto em Python (Pandas) que consome extrações brutas,
+                        <p>Desenvolvimento de um script robusto em Python que consome extrações brutas,
                             normaliza calendários convertendo-os dinamicamente em Ano/Período Fiscal, cruza múltiplos
-                            DataFrames e calcula o "Custo de Servir" unitário em tempo recorde.</p>
+                            DataFrames e calcula o custo unitário em tempo recorde.</p>
                     </div>
 
                     <div class="project-impact">
@@ -1152,14 +1264,14 @@
                     </div>
                     <div class="project-desc-group">
                         <strong>A Solução:</strong>
-                        <p>Arquitetura de uma suíte de robôs em Python/Selenium autônomos. A infraestrutura conta com
+                        <p>Arquitetura de robôs em Python/Selenium autônomos. A infraestrutura conta com
                             criptografia em memória para credenciais, gestão avançada de Logging e esperas explícitas
                             customizadas para contornar gargalos e lentidão nas plataformas.</p>
                     </div>
 
                     <div class="project-impact">
-                        <strong>Impacto:</strong> Automação fim-a-fim de rotinas críticas (ex: zk53, COMEX, Jaggaer)
-                        rodando 24/7 sem falhas, poupando estimadas milhares de horas anuais da operação de backoffice.
+                        <strong>Impacto:</strong> Automação fim-a-fim de rotinas críticas
+                        rodando 24/7 sem falhas, poupando estimadas milhares de horas anuais da operação.
                     </div>
 
                     <div class="project-tags">
@@ -1190,7 +1302,7 @@
                     </div>
 
                     <div class="project-impact">
-                        <strong>Impacto:</strong> Transparência total da rentabilidade de operações e "Custo Servir",
+                        <strong>Impacto:</strong> Transparência total da rentabilidade de operações,
                         guiando a tomada de decisão gerencial com métricas em tempo real, drill-downs e cruzamento de
                         metadados logísticos.
                     </div>
