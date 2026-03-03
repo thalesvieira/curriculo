@@ -167,6 +167,39 @@
             color: var(--accent);
         }
 
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+            animation: fadeInDown 0.6s 0.4s ease both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-1);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 99px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
+        }
+
         /* === KPI STRIP === */
         .kpi-strip {
             display: grid;
@@ -834,6 +867,16 @@
                 <a href="https://linkedin.com/in/thales-von-arnt" target="_blank">🔗 linkedin.com/in/thales-von-arnt</a>
                 <a>📍 Porto Alegre – RS, Brasil</a>
             </div>
+            <div class="hero-actions">
+                <a href="Curriculo%20Thales%20Von%20Arnt.pdf" target="_blank" class="btn-primary"
+                    download="Curriculo Thales Von Arnt.pdf">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download CV (PDF)
+                </a>
+            </div>
         </section>
 
         <!-- KPI STRIP -->
@@ -1079,7 +1122,8 @@
                                 RS</span></div>
                         <ul class="timeline-bullets">
                             <li>Desenvolvimento e manutenção de módulos no sistema <strong>ERP</strong> utilizando
-                                <strong>C#</strong> e <strong>.NET Framework</strong>.</li>
+                                <strong>C#</strong> e <strong>.NET Framework</strong>.
+                            </li>
                             <li>Implementação de melhorias e <strong>automações</strong> para reduzir esforço
                                 operacional dos clientes.</li>
                             <li>Administração e otimização de consultas em <strong>SQL Server</strong>.</li>
@@ -1180,7 +1224,8 @@
                         <div class="timeline-company">Connect Inc. Big Data Solutions</div>
                         <ul class="timeline-bullets">
                             <li>Desenvolvimento de integrações com <strong>Web Services (REST e SOAP)</strong> e
-                                <strong>Talend</strong>.</li>
+                                <strong>Talend</strong>.
+                            </li>
                             <li>Automação de processos de produtos e pedidos com <strong>Java</strong>.</li>
                         </ul>
                         <div class="timeline-tags">
@@ -1249,7 +1294,7 @@
         }
 
         // =========================================
-        // SKILL BAR ANIMATION
+        // SKILL BAR 
         // =========================================
         function animateSkillBars() {
             document.querySelectorAll('.skill-bar-fill').forEach(el => {
