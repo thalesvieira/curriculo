@@ -542,6 +542,7 @@
             border-radius: 16px;
             padding: 24px;
             transition: border-color 0.3s;
+            min-width: 0;
         }
 
         .chart-card:hover {
@@ -560,6 +561,7 @@
         .chart-wrapper {
             position: relative;
             height: 260px;
+            width: 100%;
         }
 
         .chart-card.full-width {
@@ -1060,6 +1062,107 @@
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
+        /* === DASHBOARD GALLERY === */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.15);
+        }
+
+        .dashboard-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .dashboard-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .dashboard-card-info {
+            padding: 16px 20px;
+        }
+
+        .dashboard-card-info h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .dashboard-card-info p {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .dashboard-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 17, 23, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .dashboard-card:hover .dashboard-overlay {
+            opacity: 1;
+        }
+
+        .dashboard-overlay span {
+            background: var(--gradient-1);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
         /* === FOOTER === */
         .footer {
             text-align: center;
@@ -1415,6 +1518,67 @@
                 </div>
             </div>
         </section>
+
+        <!-- DASHBOARD GALLERY -->
+        <section class="section animate-on-scroll">
+            <div class="section-header">
+                <div class="icon" style="background:rgba(139,92,246,0.1);">📋</div>
+                <h2>Exemplos de Dashboards</h2>
+                <div class="line"></div>
+            </div>
+
+            <p
+                style="font-size: 13px; color: var(--text-dim); margin-top: -15px; margin-bottom: 25px; display: flex; align-items: center; gap: 6px;">
+                <span style="font-size: 16px;">💡</span> <em>Nota: Os dados, nomes e valores financeiros exibidos nestas
+                    imagens foram totalmente alterados e gerados por Inteligência Artificial para preservar informações
+                    sensíveis e confidenciais das empresas, mantendo apenas a estrutura visual e o storytelling dos
+                    dados da solução original.</em>
+            </p>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card" onclick="openLightbox(this)">
+                    <div style="position:relative;overflow:hidden;">
+                        <img src="dashboard_ros.png" alt="Dashboard Rate of Service">
+                        <div class="dashboard-overlay"><span>🔍 Ampliar</span></div>
+                    </div>
+                    <div class="dashboard-card-info">
+                        <h4>Performance Operacional & SLA</h4>
+                        <p>Visão executiva do Rate of Service global. Focado em identificar gargalos de atendimento,
+                            cruzando volume de requisições com o cumprimento rigoroso de prazos.</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card" onclick="openLightbox(this)">
+                    <div style="position:relative;overflow:hidden;">
+                        <img src="dashboard_savings.png" alt="Dashboard Savings Panel">
+                        <div class="dashboard-overlay"><span>🔍 Ampliar</span></div>
+                    </div>
+                    <div class="dashboard-card-info">
+                        <h4>Painel Executivo de Savings</h4>
+                        <p>Ferramenta de gestão financeira para lideranças. Acompanha o saving gerado por comprador em
+                            tempo real, comparando metas anuais (Forecast) vs. Resultados Alcançados.</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card" onclick="openLightbox(this)">
+                    <div style="position:relative;overflow:hidden;">
+                        <img src="dashboard_automation.png" alt="Dashboard Automation Monitoring">
+                        <div class="dashboard-overlay"><span>🔍 Ampliar</span></div>
+                    </div>
+                    <div class="dashboard-card-info">
+                        <h4>Monitoramento de Ecossistema RPA</h4>
+                        <p>Painel de controle para mapear a adoção tecnológica. Mensura a taxa de sucesso das
+                            automações, auditando quais processos seguem manuais e o impacto direto em volume de horas
+                            poupadas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+            <img id="lightbox-img" src="" alt="Dashboard ampliado">
+        </div>
 
         <!-- SKILLS -->
         <section class="section animate-on-scroll">
@@ -1937,6 +2101,19 @@
                 }
             }
         });
+
+        // =========================================
+        // LIGHTBOX
+        // =========================================
+        function openLightbox(card) {
+            const img = card.querySelector('img');
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
 
         // =========================================
         // INIT
